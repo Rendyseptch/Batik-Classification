@@ -74,21 +74,21 @@
         </x-header-section>
 
         <main class="text-gray-900">
-            <section class="pt-10 md:pt-40">
+            <section class="pt-10 md:pt-20">
                 <x-hero></x-hero>
             </section>
-            <section class="pt-10 md:pt-40">
-                <div class="mt-20">
+            <section  class="pt-10 md:pt-40 mx-40 mb-40">
+                <div id="galeriBatik" class="mt-20">
                     <div class="container mx-auto px-4 py-8">
                         <h1 class="text-4xl font-bold text-center mb-8">Galeri Batik Malang</h1>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <!-- Large item -->
                             <div class="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxuYXR1cmV8ZW58MHwwfHx8MTcyMTA0MjYwMXww&ixlib=rb-4.0.3&q=80&w=1080" alt="Nature" class="w-full h-full object-cover">
+                                 <img src="{{ URL::asset('image/Leres Pending.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">
                                 <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h3 class="text-2xl font-bold text-white">Explore Nature</h3>
+                                        <h3 class="text-2xl font-bold text-white">Leres Pending</h3>
                                         <p class="text-white">Discover the beauty of the natural world</p>
                                     </div>
                                 </div>
@@ -96,78 +96,71 @@
 
                             <!-- Two small items -->
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxmb29kfGVufDB8MHx8fDE3MjEwNDI2MTR8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Food" class="w-full h-48 object-cover">
+                                <img src="{{ URL::asset('image/Tugu.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">
                                 <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Culinary Delights</h4>
+                                        <h4 class="text-xl font-bold text-white">Tugu</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHx0ZWNobm9sb2d5fGVufDB8MHx8fDE3MjEwNDI2Mjh8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Technology" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/Teratai.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Tech Innovations</h4>
+                                        <h4 class="text-xl font-bold text-white">Teratai</h4>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Three medium items -->
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHx0cmF2ZWx8ZW58MHwwfHx8MTcyMTA0MjY0MXww&ixlib=rb-4.0.3&q=80&w=1080" alt="Travel" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/Topeng.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Travel Adventures</h4>
+                                        <h4 class="text-xl font-bold text-white">Topeng</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxhcnR8ZW58MHwwfHx8MTcyMTA0MjY5Nnww&ixlib=rb-4.0.3&q=80&w=1080" alt="Art" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/Boiota Laut.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Artistic Expressions</h4>
+                                        <h4 class="text-xl font-bold text-white">Biota Laut</h4>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- bottom cards -->
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwyfHxzd2ltbWluZ3xlbnwwfDB8fHwxNzIxMDQzMjkxfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Sport" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/sekartajiprameswari.JPG') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Swimming</h4>
+                                        <h4 class="text-xl font-bold text-white">Sekartaji Prameswari Juwita</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8Y2hlc3N8ZW58MHwwfHx8MTcyMTA0MzI0Nnww&ixlib=rb-4.0.3&q=80&w=1080" alt="Sport" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/Apel.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Chess</h4>
+                                        <h4 class="text-xl font-bold text-white">Apel Malang</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHxmb290YmFsbHxlbnwwfDB8fHwxNzIxMDQzMjExfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Sport" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/CandiJago.JPG') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Football</h4>
+                                        <h4 class="text-xl font-bold text-white">Candi Jago</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                                <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw3fHxjcmlja2V0fGVufDB8MHx8fDE3MjEwNDMxNTh8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Sport" class="w-full h-48 object-cover">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <img src="{{ URL::asset('image/Adiluhung.jpg') }}" alt="Logo Batik" class="w-full h-full object-cover">                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                                     <div class="absolute bottom-0 left-0 right-0 p-4">
-                                        <h4 class="text-xl font-bold text-white">Cricket</h4>
+                                        <h4 class="text-xl font-bold text-white">Adiluhung</h4>
                                     </div>
                                 </div>
                             </div>
@@ -214,20 +207,21 @@
                         <div class="border-t border-4 border-gray-200 flex-grow"></div>
                     </div>
 
-                    <div class="flex flex-col md:flex-row md:-mx-3">
+                    <div class="flex flex-col md:flex-row md:mx-20">
                         <x-card
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing"
-                            description="Eu lobortis elementum nibh tellus molestie nunc non blandit massa. Sit amet consectetur adipiscing elit duis."
-                            name="Jane Doe"
-                            position="Director of Research and Data"
+                            title="Warna Cerah yang Melambangkan Semangat Arek Malang"
+                            description="Berbeda dari batik tradisional lainnya yang cenderung menggunakan warna gelap seperti coklat sogan, Batik Malang dikenal dengan warna-warna cerah dan berani seperti biru,
+                             merah, dan hijau. Warna-warna ini dianggap mewakili jiwa muda dan semangat khas masyarakat Malang, terutama arek-arek Malang."
+                            {{-- name="Jane Doe"
+                            position="Director of Research and Data" --}}
                             image="https://placeimg.com/150/150/people"
                         />
 
                         <x-card
                             title="Pengaruh Budaya Topeng dalam Desain Batik"
                             description="Salah satu motif khas Batik Malang adalah Topeng Malangan, yang menggambarkan berbagai karakter topeng khas Malang. Motif ini menjadi simbol kebudayaan dan seni asli dari daerah Malang. Batik Topeng Malangan ini berkembang pesat karena pemasaran yang dilakukan oleh Rumah Batik Blimbing bekerja sama dengan pemerintah daerah, dan kini semakin dikenal luas ."
-                            name="John Doe"
-                            position="Director of Research and Data"
+                            {{-- name="John Doe" --}}
+                            {{-- position="Director of Research and Data" --}}
                             image="https://placeimg.com/150/150/people"
                             {{--  sumber :https://ejournal.unesa.ac.id/index.php/va/article/view/39109/34305 --}}
 
@@ -236,8 +230,8 @@
                         <x-card
                             title="Batik Malang sebagai Produk Ekonomi Kreatif Lokal"
                             description="Batik Malang tidak hanya berfungsi sebagai warisan budaya, tetapi juga sebagai produk ekonomi kreatif yang mendukung perekonomian lokal. Pengrajin batik di Malang mengembangkan desain-desain baru yang inovatif, seperti motif daun pakis, untuk meningkatkan daya saing produk di pasar global. Selain itu, prinsip zero waste diterapkan dalam produksi batik, di mana kain yang rusak atau kurang sempurna diolah kembali menjadi produk fungsional seperti tas dan dompet, meningkatkan nilai ekonomi produk tersebut."
-                            name="Jane Smith"
-                            position="Director of Research and Data"
+                            {{-- name="Jane Smith"
+                            position="Director of Research and Data" --}}
                             image="https://placeimg.com/150/150/people"
                         />
                     </div>

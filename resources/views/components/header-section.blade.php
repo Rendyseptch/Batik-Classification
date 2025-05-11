@@ -22,8 +22,9 @@
             @if (Request::is('classification-batik'))
                 <a class="block uppercase font-semibold py-2 lg:py-0 text-gray-400 hover:text-blue-600" href="/">< Back To Home</a>
             @else
-                <a class="block uppercase text-gray-500 font-semibold py-2 lg:py-0 hover:text-blue-600" href="#services">About</a>
-                <a class="block uppercase text-gray-500 font-semibold py-2 lg:py-0 hover:text-blue-600" href="#testimonials">Tentang Batik</a>
+                <a class="block uppercase text-gray-500 font-semibold py-2 lg:py-0 hover:text-blue-600" href="#galeriBatik">Galeri Batik</a>
+                <a class="block uppercase text-gray-500 font-semibold py-2 lg:py-0 hover:text-blue-600" href="#services">Tentang</a>
+                <a class="block uppercase text-gray-500 font-semibold py-2 lg:py-0 hover:text-blue-600" href="#testimonials">Fakta Menarik </a>
                 <a class="block uppercase text-gray-500 font-semibold py-2 lg:py-0 hover:text-blue-600" href="/classification-batik">Klasifikasi Batik</a>
             @endif
         </nav>
