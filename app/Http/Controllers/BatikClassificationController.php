@@ -27,7 +27,7 @@ class BatikClassificationController extends Controller
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10048',
             ]);
 
-            $response = Http::attach(
+            $response = Http::timeout(30)->attach(
                 'image',
                 file_get_contents($request->file('image')->getRealPath()),
                 $request->file('image')->getClientOriginalName()
@@ -39,7 +39,8 @@ class BatikClassificationController extends Controller
             Log::error('Classification error: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'error' => $e->getMessage(),
+                'error' => 'An error occurred during classification',
+                'details' => $e->getMessage(),
             ], 500);
         }
     }
@@ -51,7 +52,7 @@ class BatikClassificationController extends Controller
                 'image' => 'required|string', // base64 encoded image
             ]);
 
-            $response = Http::post($this->flaskApiUrl . '/api/scan', [
+            $response = Http::timeout(30)->post($this->flaskApiUrl . '/api/scan', [
                 'image' => $request->image,
             ]);
 
@@ -61,35 +62,52 @@ class BatikClassificationController extends Controller
             Log::error('Scan error: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'error' => $e->getMessage(),
+                'error' => 'An error occurred during scanning',
+                'details' => $e->getMessage(),
             ], 500);
         }
     }
 
     private function handleApiResponse($response)
     {
-        if ($response->successful()) {
-            $data = $response->json();
+        try {
+            if ($response->successful()) {
+                $data = $response->json();
 
-            // Format confidence percentages consistently
-            if (isset($data['predictions'])) {
-                foreach ($data['predictions'] as &$prediction) {
-                    if (isset($prediction['confidence_percentage'])) {
-                        $prediction['confidence'] = number_format($prediction['confidence_percentage'], 2) . '%';
+                // Format confidence percentages consistently
+                if (isset($data['predictions'])) {
+                    foreach ($data['predictions'] as &$prediction) {
+                        if (isset($prediction['confidence'])) {
+                            // Handle both float and string cases
+                            $confidence = $prediction['confidence'];
+                            if (is_numeric($confidence)) {
+                                $prediction['confidence'] = number_format((float)$confidence, 2) . '%';
+                            }
+                        }
                     }
                 }
+
+                return response()->json([
+                    'success' => true,
+                    'data' => $data,
+                ]);
             }
 
-            return response()->json([
-                'success' => true,
-                'data' => $data,
-            ]);
-        }
+            $errorDetails = $response->json() ?? $response->body();
 
-        return response()->json([
-            'success' => false,
-            'error' => 'API request failed',
-            'details' => $response->json(),
-        ], $response->status());
+            return response()->json([
+                'success' => false,
+                'error' => 'API request failed',
+                'details' => $errorDetails,
+            ], $response->status());
+
+        } catch (\Exception $e) {
+            Log::error('Response handling error: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'error' => 'Error processing API response',
+                'details' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
