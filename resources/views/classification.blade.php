@@ -124,7 +124,7 @@
         </div>
 
         <div class="px-4 relative transform -translate-y-1/2">
-            <div class="relative z-50 max-w-5xl mx-auto rounded-lg overflow-hidden border-white border-4">
+            <div class="relative  max-w-5xl mx-auto rounded-lg overflow-hidden border-white border-4">
                 <!-- Background Image -->
                 <div class="absolute inset-0">
                     <img src="{{ asset('image/Batik_cover.JPG') }}" alt="Cover Batik"
@@ -135,14 +135,14 @@
                 <!-- Text Content -->
                 <div class="relative px-14 py-6 flex items-center justify-center">
                     <h1
-                        class="lg:text-4xl md:text-sm text-white text-shadow-black lg:text-5xl xl:text-6xl font-bold leading-none text-center">
+                        class=" text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white text-shadow-black lg:text-5xl xl:text-6xl font-bold leading-none text-center">
                         Klasifikasi Batik Malang
                     </h1>
                 </div>
             </div>
         </div>
 
-        <section class="mt-16">
+        <section class="lg:mt-16">
             <div class="max-w-7xl mx-auto text-center">
                 <h2 class="text-xl font-semibold text-gray-400 font-sans">
                     Scan Motif Batik Atau Upload Gambar untuk Mengenali Batik Anda
@@ -153,7 +153,7 @@
                 class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 w-full my-10 px-4">
                 <!-- Tombol Scan Kamera -->
                 <button id="openCameraBtn"
-                    class="flex items-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-3xl hover:bg-blue-600 transition-colors">
+                    class="flex items-center gap-2 px-12 py-7 bg-blue-500 text-white font-bold rounded-3xl hover:bg-blue-600 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -165,9 +165,9 @@
 
                 <!-- Modal Kamera -->
                 <div id="cameraModal"
-                    class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center">
-                    <div class="bg-white rounded-lg p-4 w-full max-w-2xl">
-                        <div class="flex justify-between items-center mb-4">
+                    class="hidden fixed w-full inset-0 translate-left-1/2 bg-black bg-opacity-75 z-50 flex items-center justify-center">
+                    <div class="bg-white rounded-lg md:rounded-lg w-full h-full md:h-auto md:max-w-2xl flex flex-col">
+                        <div class="flex justify-between items-center p-4 border-b">
                             <h3 class="text-lg font-semibold">Realtime Batik Detection</h3>
                             <button id="closeCameraBtn" class="text-gray-500 hover:text-gray-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -178,25 +178,26 @@
                             </button>
                         </div>
 
-                        <div class="relative">
-                            <div class="relative w-full h-auto">
-                                <video id="cameraFeed" class="w-full rounded-lg" autoplay playsinline></video>
+                        <div class="relative flex-1 min-h-[300px]">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <video id="cameraFeed" class="w-full h-full object-contain" autoplay
+                                    playsinline></video>
                                 <div id="detectionOverlay" class="absolute top-0 left-0 w-full h-full"></div>
                             </div>
                             <canvas id="cameraCanvas" class="hidden"></canvas>
                         </div>
 
-                        <div class="mt-4 flex justify-between items-center">
-                            <div id="realtimeResults" class="text-left">
+                        <div class="p-4 border-t">
+                            <div id="realtimeResults" class="text-left mb-3">
                                 <p class="text-sm text-gray-600">Arahkan kamera ke motif batik untuk mendeteksi</p>
                             </div>
                             <div class="flex space-x-2">
                                 <button id="toggleDetectionBtn"
-                                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                                    class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
                                     Mulai Deteksi
                                 </button>
                                 <button id="captureBtn"
-                                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                                    class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition-colors">
                                     Ambil Foto
                                 </button>
                             </div>
@@ -217,7 +218,7 @@
                                 class="block text-base font-semibold relative text-blue-900 group-hover:text-blue-500">
                                 Upload Gambar
                             </span>
-                            <span class="mt-0.5 block text-sm text-gray-500">Max 2 MB</span>
+                            {{-- <span class="mt-0.5 block text-sm text-gray-500">Max 2 MB</span> --}}
                         </div>
                     </label>
                     <input hidden type="file" name="image" id="imageUpload"
@@ -266,7 +267,114 @@
             }
 
             // Fungsi untuk menampilkan hasil
-            function showResults(data) {
+            // function showResults(data) {
+            //     if (data.success) {
+            //         const formatConfidence = (percentage) => {
+            //             const num = typeof percentage === 'string' ?
+            //                 parseFloat(percentage.replace('%', '')) :
+            //                 percentage;
+            //             return num.toLocaleString('id-ID', {
+            //                 minimumFractionDigits: 2,
+            //                 maximumFractionDigits: 2
+            //             }) + '%';
+            //         };
+
+            //         // Filter predictions dengan confidence di atas threshold
+            //         const validPredictions = data.data.top_predictions.filter(pred =>
+            //             extractConfidenceValue(pred.confidence_percentage) >= MIN_CONFIDENCE
+            //         );
+
+            //         if (validPredictions.length === 0) {
+            //             classificationResult.innerHTML = `
+        //             <div class="bg-white rounded-lg shadow-md p-6 animate-slide-up">
+        //                 <h2 class="text-xl font-semibold text-gray-800 text-center mb-4">
+        //                     Tidak Terdeteksi Motif Batik
+        //                 </h2>
+        //                 <p class="text-gray-600 text-center">
+        //                     Sistem tidak dapat mengidentifikasi motif batik dengan confidence yang cukup.
+        //                 </p>
+        //                 <div class="mt-6 pt-4 border-t text-center">
+        //                     <button id="tryAgainBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+        //                         Coba Lagi
+        //                     </button>
+        //                 </div>
+        //             </div>
+        //         `;
+            //         } else {
+            //             const topPrediction = validPredictions[0];
+            //             const otherPredictions = validPredictions.slice(1);
+
+            //             classificationResult.innerHTML = `
+        //             <div class="bg-white rounded-lg shadow-md p-6 animate-slide-up">
+        //                 <h2 class="text-xl font-semibold text-gray-800 text-center mb-4">
+        //                     Prediksi Motif Batik:
+        //                     <span class="text-blue-600">${topPrediction.class_name}</span>
+        //                 </h2>
+
+        //                 <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
+        //                     <div class="text-center">
+        //                         <p class="text-gray-500">Tingkat Confidence:</p>
+        //                         <p class="text-xl font-semibold">${formatConfidence(topPrediction.confidence_percentage)}</p>
+        //                     </div>
+        //                     <div class="hidden md:block text-gray-400">|</div>
+        //                     <div class="text-center">
+        //                         <p class="text-gray-500">Waktu Prediksi:</p>
+        //                         <p class="text-xl font-semibold">${data.data.performance_metrics.inference_time_ms} ms</p>
+        //                     </div>
+        //                     <div class="hidden md:block text-gray-400">|</div>
+        //                     <div class="text-center">
+        //                         <p class="text-gray-500">Memori Digunakan:</p>
+        //                         <p class="text-xl font-semibold">${data.data.performance_metrics.memory_usage_mb} MB</p>
+        //                     </div>
+        //                 </div>
+
+        //                 ${otherPredictions.length > 0 ? `
+            //                                                             <div class="mt-6 border-t pt-4">
+            //                                                                 <h3 class="text-lg font-medium text-gray-700 text-center mb-3">Prediksi lainnya:</h3>
+            //                                                                 <ul class="space-y-2 max-w-md mx-auto">
+            //                                                                     ${otherPredictions.map(pred => `
+        //                                 <li class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+        //                                     <span class="text-gray-700">${pred.class_name}</span>
+        //                                     <span class="text-gray-500 text-sm bg-white px-2 py-1 rounded">${formatConfidence(pred.confidence_percentage)}</span>
+        //                                 </li>
+        //                             `).join('')}
+            //                                                                 </ul>
+            //                                                             </div>
+            //                                                         ` : ''}
+
+        //                 <div class="mt-6 pt-4 border-t text-center">
+        //                     <button id="tryAgainBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+        //                         Coba Lagi
+        //                     </button>
+        //                 </div>
+        //             </div>
+        //         `;
+            //         }
+
+            //         // Tambahkan event listener untuk tombol coba lagi
+            //         document.getElementById('tryAgainBtn').addEventListener('click', function() {
+            //             resultsSection.classList.add('hidden');
+            //             defaultResults.classList.remove('hidden');
+            //             imageUpload.value = ''; // Reset file input
+            //         });
+            //     } else {
+            //         classificationResult.innerHTML = `
+        //         <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+        //             <div class="flex items-center">
+        //                 <div class="flex-shrink-0">
+        //                     <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        //                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+        //                     </svg>
+        //                 </div>
+        //                 <div class="ml-3">
+        //                     <p class="text-sm text-red-700">${data.error || 'Gagal memproses gambar'}</p>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     `;
+            //     }
+            // }
+            function showResults(data, imageSrc) {
                 if (data.success) {
                     const formatConfidence = (percentage) => {
                         const num = typeof percentage === 'string' ?
@@ -285,11 +393,17 @@
 
                     if (validPredictions.length === 0) {
                         classificationResult.innerHTML = `
-                        <div class="bg-white rounded-lg shadow-md p-6 animate-slide-up">
-                            <h2 class="text-xl font-semibold text-gray-800 text-center mb-4">
+                <div class="bg-white rounded-lg shadow-md p-6 animate-slide-up">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-lg font-medium text-gray-700 mb-2">Gambar Input:</h3>
+                            <img src="${imageSrc}" alt="Uploaded Batik" class="w-full h-auto rounded-lg border border-gray-200">
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <h2 class="text-xl font-semibold text-gray-800 mb-4">
                                 Tidak Terdeteksi Motif Batik
                             </h2>
-                            <p class="text-gray-600 text-center">
+                            <p class="text-gray-600">
                                 Sistem tidak dapat mengidentifikasi motif batik dengan confidence yang cukup.
                             </p>
                             <div class="mt-6 pt-4 border-t text-center">
@@ -298,56 +412,59 @@
                                 </button>
                             </div>
                         </div>
-                    `;
+                    </div>
+                </div>
+            `;
                     } else {
                         const topPrediction = validPredictions[0];
                         const otherPredictions = validPredictions.slice(1);
 
                         classificationResult.innerHTML = `
-                        <div class="bg-white rounded-lg shadow-md p-6 animate-slide-up">
-                            <h2 class="text-xl font-semibold text-gray-800 text-center mb-4">
+                <div class="bg-white rounded-lg shadow-md p-6 animate-slide-up">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <!-- Kolom Gambar -->
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-lg font-medium text-gray-700 mb-2">Gambar Input:</h3>
+                            <img src="${imageSrc}" alt="Uploaded Batik" class="w-full h-auto rounded-lg border border-gray-200">
+                        </div>
+
+                        <!-- Kolom Hasil -->
+                        <div class="w-full md:w-full justify-center">
+                            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">
                                 Prediksi Motif Batik:
-                                <span class="text-blue-600">${topPrediction.class_name}</span>
+                                <span class="text-blue-600  ">${topPrediction.class_name}</span>
                             </h2>
 
-                            <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
-                                <div class="text-center">
-                                    <p class="text-gray-500">Tingkat Confidence:</p>
-                                    <p class="text-xl font-semibold">${formatConfidence(topPrediction.confidence_percentage)}</p>
-                                </div>
-                                <div class="hidden md:block text-gray-400">|</div>
-                                <div class="text-center">
-                                    <p class="text-gray-500">Waktu Prediksi:</p>
-                                    <p class="text-xl font-semibold">${data.data.performance_metrics.inference_time_ms} ms</p>
-                                </div>
-                                <div class="hidden md:block text-gray-400">|</div>
-                                <div class="text-center">
-                                    <p class="text-gray-500">Memori Digunakan:</p>
-                                    <p class="text-xl font-semibold">${data.data.performance_metrics.memory_usage_mb} MB</p>
+                            <div class="grid grid-cols gap-4 mb-6 mx-auto">
+                                <div class="bg-gray-50 p-3 rounded-lg">
+                                    <p class="text-gray-500 text-sm text-center">Confidence:</p>
+                                    <p class="text-lg font-semibold text-center">${formatConfidence(topPrediction.confidence_percentage)}</p>
                                 </div>
                             </div>
 
                             ${otherPredictions.length > 0 ? `
-                                                                        <div class="mt-6 border-t pt-4">
-                                                                            <h3 class="text-lg font-medium text-gray-700 text-center mb-3">Prediksi lainnya:</h3>
-                                                                            <ul class="space-y-2 max-w-md mx-auto">
-                                                                                ${otherPredictions.map(pred => `
+                                                                                                                                                                                                                                <div class="mt-4 border-t pt-4">
+                                                                                                                                                                                                                                    <h3 class="text-lg font-medium text-gray-700 mb-3">Prediksi lainnya:</h3>
+                                                                                                                                                                                                                                    <ul class="space-y-2">
+                                                                                                                                                                                                                                        ${otherPredictions.map(pred => `
                                             <li class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
                                                 <span class="text-gray-700">${pred.class_name}</span>
                                                 <span class="text-gray-500 text-sm bg-white px-2 py-1 rounded">${formatConfidence(pred.confidence_percentage)}</span>
                                             </li>
                                         `).join('')}
-                                                                            </ul>
-                                                                        </div>
-                                                                    ` : ''}
+                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                            ` : ''}
 
                             <div class="mt-6 pt-4 border-t text-center">
-                                <button id="tryAgainBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
-                                    Coba Lagi
+                                <button id="tryAgainBtn" class="px-4 py-2 rounded-md bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                                    <p class="font-semibold">Coba Lagi </p>
                                 </button>
                             </div>
                         </div>
-                    `;
+                    </div>
+                </div>
+            `;
                     }
 
                     // Tambahkan event listener untuk tombol coba lagi
@@ -358,19 +475,19 @@
                     });
                 } else {
                     classificationResult.innerHTML = `
-                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0">
-                                <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm text-red-700">${data.error || 'Gagal memproses gambar'}</p>
-                            </div>
-                        </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
                     </div>
-                `;
+                    <div class="ml-3">
+                        <p class="text-sm text-red-700">${data.error || 'Gagal memproses gambar'}</p>
+                    </div>
+                </div>
+            </div>
+        `;
                 }
             }
 
@@ -464,18 +581,23 @@
                     defaultResults.classList.add('hidden');
                     resultsSection.classList.remove('hidden');
                     classificationResult.innerHTML = `
-                    <div class="text-center py-8">
-                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-                        <p class="mt-2 text-gray-600">Memproses gambar...</p>
-                    </div>
-                `;
+            <div class="text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                <p class="mt-2 text-gray-600">Memproses gambar...</p>
+            </div>
+        `;
                 }
 
                 try {
+                    let imageSrc;
+
                     if (isFile) {
                         // Handle file upload
                         const formData = new FormData();
                         formData.append('image', imageData);
+
+                        // Create preview URL for the uploaded file
+                        imageSrc = URL.createObjectURL(imageData);
 
                         const response = await fetch('http://localhost:5000/api/upload', {
                             method: 'POST',
@@ -487,9 +609,11 @@
                         });
 
                         const data = await response.json();
-                        showResults(data);
+                        showResults(data, imageSrc);
                     } else {
                         // Handle base64 image from camera
+                        imageSrc = imageData; // Use the base64 string directly
+
                         const response = await fetch('http://localhost:5000/api/scan', {
                             method: 'POST',
                             headers: {
@@ -507,32 +631,32 @@
                         if (isRealtime) {
                             showRealtimeResults(data);
                         } else {
-                            showResults(data);
+                            showResults(data, imageSrc);
                         }
                     }
                 } catch (error) {
                     console.error('Error:', error);
                     if (isRealtime) {
                         realtimeResults.innerHTML = `
-                        <div class="bg-red-50 p-2 rounded">
-                            <p class="text-sm text-red-700">Error: ${error.message || 'Terjadi kesalahan'}</p>
-                        </div>
-                    `;
+                <div class="bg-red-50 p-2 rounded">
+                    <p class="text-sm text-red-700">Error: ${error.message || 'Terjadi kesalahan'}</p>
+                </div>
+            `;
                     } else {
                         classificationResult.innerHTML = `
-                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0">
-                                    <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-red-700">${error.message || 'Terjadi kesalahan saat memproses gambar'}</p>
-                                </div>
-                            </div>
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                            </svg>
                         </div>
-                    `;
+                        <div class="ml-3">
+                            <p class="text-sm text-red-700">${error.message || 'Terjadi kesalahan saat memproses gambar'}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
                     }
                 }
             }
@@ -596,6 +720,13 @@
                     alert('Hanya file gambar (PNG, JPG, JPEG, GIF) yang diperbolehkan');
                     return;
                 }
+
+                // Tampilkan preview gambar sebelum upload
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Tidak perlu menampilkan preview di sini karena akan ditangani di showResults
+                };
+                reader.readAsDataURL(file);
 
                 sendImageToAPI(file);
             });
